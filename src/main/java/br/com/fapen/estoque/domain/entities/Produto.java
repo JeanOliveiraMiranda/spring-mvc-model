@@ -27,7 +27,7 @@ public class Produto {
     @Column(name = "preco_venda")
     private BigDecimal precoVenda;
 
-    @Column(name = "categoria")
+    @Column(name = "categoria", length = 10)
     private String categoria;
 
     @Column(name = "saldo_atual")
