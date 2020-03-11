@@ -1,4 +1,4 @@
-package br.com.fapen.estoque.controllers;
+package br.com.fapen.estoque.views;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
