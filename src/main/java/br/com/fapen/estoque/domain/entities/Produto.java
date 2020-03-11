@@ -11,34 +11,96 @@ import javax.persistence.Id;
 /**
  * Produto
  */
-@Entity(name = "t_produto")
+@Entity(name = "tb_produto")
 public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id_produto", nullable = false)
+    private Long idProduto;
 
-    @Column(name = "descricao")
+    // Essa coluna o tipo dela vai ser a entidade de Fornecedor
+    @Column(name = "id_fornecedor", nullable = false)
+    private Long idFornecedor;
+
+    @Column(name = "tipo_produto", nullable = false, length = 60)
+    private String tipoProduto;
+
+    @Column(name = "modelo", nullable = false, length = 60)
+    private String modelo;
+
+    @Column(name = "valor", nullable = false)
+    private BigDecimal valor;
+
+    @Column(name = "peso", nullable = false, length = 60)
+    private String peso;
+
+    @Column(name = "cor", nullable = false, length = 60)
+    private String cor;
+
+    @Column(name = "descricao", nullable = false, length = 200)
     private String descricao;
 
-    @Column(name = "custo_unitario")
-    private BigDecimal custoUnitario;
+    @Column(name = "quantidade_estoque", nullable = false)
+    private Integer quantidadeEstoque;
 
-    @Column(name = "preco_venda")
-    private BigDecimal precoVenda;
+    @Column(name = "inativo", nullable = false)
+    private boolean inativo;
 
-    @Column(name = "categoria", length = 10)
-    private String categoria;
-
-    @Column(name = "saldo_atual")
-    private Double saldoAtual;
-
-    public Long getId() {
-        return this.id;
+    public Long getIdProduto() {
+        return this.idProduto;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdProduto(Long idProduto) {
+        this.idProduto = idProduto;
+    }
+
+    public Long getIdFornecedor() {
+        return this.idFornecedor;
+    }
+
+    public void setIdFornecedor(Long idFornecedor) {
+        this.idFornecedor = idFornecedor;
+    }
+
+    public String getTipoProduto() {
+        return this.tipoProduto;
+    }
+
+    public void setTipoProduto(String tipoProduto) {
+        this.tipoProduto = tipoProduto;
+    }
+
+    public String getModelo() {
+        return this.modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public BigDecimal getValor() {
+        return this.valor;
+    }
+
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
+    }
+
+    public String getPeso() {
+        return this.peso;
+    }
+
+    public void setPeso(String peso) {
+        this.peso = peso;
+    }
+
+    public String getCor() {
+        return this.cor;
+    }
+
+    public void setCor(String cor) {
+        this.cor = cor;
     }
 
     public String getDescricao() {
@@ -49,36 +111,24 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public BigDecimal getCustoUnitario() {
-        return this.custoUnitario;
+    public Integer getQuantidadeEstoque() {
+        return this.quantidadeEstoque;
     }
 
-    public void setCustoUnitario(BigDecimal custoUnitario) {
-        this.custoUnitario = custoUnitario;
+    public void setQuantidadeEstoque(Integer quantidadeEstoque) {
+        this.quantidadeEstoque = quantidadeEstoque;
     }
 
-    public BigDecimal getPrecoVenda() {
-        return this.precoVenda;
+    public boolean isInativo() {
+        return this.inativo;
     }
 
-    public void setPrecoVenda(BigDecimal precoVenda) {
-        this.precoVenda = precoVenda;
+    public boolean getInativo() {
+        return this.inativo;
     }
 
-    public String getCategoria() {
-        return this.categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
-    public Double getSaldoAtual() {
-        return this.saldoAtual;
-    }
-
-    public void setSaldoAtual(Double saldoAtual) {
-        this.saldoAtual = saldoAtual;
+    public void setInativo(boolean inativo) {
+        this.inativo = inativo;
     }
 
 }
