@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,7 +21,7 @@ import br.com.fapen.estoque.repository.ProdutoRepository;
  * ProdutoController
  */
 @RestController
-@RequestMapping("/produtos")
+@RequestMapping("/v1/produtos")
 public class ProdutoController {
 
     private final ProdutoRepository produtoRepository;
@@ -32,7 +31,7 @@ public class ProdutoController {
         this.produtoRepository = produtoRepository;
     }
 
-    @GetMapping
+    @GetMapping(name = "salvarProdutoUrl")
     public ResponseEntity<List<Produto>> list() {
         return ResponseEntity.ok(produtoRepository.findAll());
     }
@@ -44,7 +43,7 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public ResponseEntity<Produto> post(@RequestBody Produto model) {
+    public ResponseEntity<Produto> post(Produto model) {
 
         Produto produto = produtoRepository.save(model);
 
@@ -52,11 +51,11 @@ public class ProdutoController {
     }
 
     @PutMapping(value = "/{id}")
-    public Produto put(@PathVariable Long id, @RequestBody Produto model) {
+    public Produto put(@PathVariable Long id, Produto model) {
         Optional<Produto> produto = produtoRepository.findById(id);
 
         if (produto.isPresent()) {
-            model.setIdProduto(id);
+            model.setId(id);
             produtoRepository.save(model);
         }
 
