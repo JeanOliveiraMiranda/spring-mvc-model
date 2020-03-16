@@ -18,7 +18,7 @@ import br.com.fapen.estoque.exception.DataNotFoundException;
 import br.com.fapen.estoque.repository.PessoaRepository;
 
 @RestController
-@RequestMapping("/v1/fornecedores")
+@RequestMapping("/v1/pessoas")
 public class PessoaController {
 
     private final PessoaRepository pessoaRepository;
@@ -49,14 +49,14 @@ public class PessoaController {
 
     @PutMapping(value = "/{id}")
     public Pessoa put(@PathVariable Long id, Pessoa model) {
-        Optional<Pessoa> fornecedor = pessoaRepository.findById(id);
+        Optional<Pessoa> pessoa = pessoaRepository.findById(id);
 
-        if (fornecedor.isPresent()) {
+        if (pessoa.isPresent()) {
             model.setIdPessoa(id);
             pessoaRepository.save(model);
         }
 
-        return fornecedor.orElseThrow(() -> new DataNotFoundException("Pessoa not Found"));
+        return pessoa.orElseThrow(() -> new DataNotFoundException("Pessoa not Found"));
     }
 
     @DeleteMapping(value = "/{id}")

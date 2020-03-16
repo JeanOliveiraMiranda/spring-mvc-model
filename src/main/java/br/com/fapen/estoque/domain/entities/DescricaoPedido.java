@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity(name = "tb_descricao_pedido")
-class DescricaoPedido {
+public class DescricaoPedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_produto", nullable = false)
