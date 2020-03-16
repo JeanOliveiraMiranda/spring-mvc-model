@@ -22,7 +22,7 @@ import br.com.fapen.estoque.repository.ProdutoRepository;
  * ProdutoController
  */
 @RestController
-@RequestMapping("/produtos")
+@RequestMapping("/v1/produtos")
 public class ProdutoController {
 
     private final ProdutoRepository produtoRepository;
@@ -44,7 +44,7 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public ResponseEntity<Produto> post(@RequestBody Produto model) {
+    public ResponseEntity<Produto> post(Produto model) {
 
         Produto produto = produtoRepository.save(model);
 
@@ -52,7 +52,7 @@ public class ProdutoController {
     }
 
     @PutMapping(value = "/{id}")
-    public Produto put(@PathVariable Long id, @RequestBody Produto model) {
+    public Produto put(@PathVariable Long id, Produto model) {
         Optional<Produto> produto = produtoRepository.findById(id);
 
         if (produto.isPresent()) {
@@ -68,7 +68,7 @@ public class ProdutoController {
 
         Optional<Produto> produto = produtoRepository.findById(id);
 
-        // erro 500 quando não encontra o cliente
+        // erro 500 quando não encontra o dado
         if (produto.isPresent()) {
             produtoRepository.deleteById(id);
         }

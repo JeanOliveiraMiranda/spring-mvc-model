@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity(name = "tb_fornecedor")
+public
 class Fornecedor {
 
     @Id
